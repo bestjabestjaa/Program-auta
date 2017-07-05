@@ -14,7 +14,8 @@ class car:
         self.cost = 0
 
         print ("Witaj! Własnie stworzyłeś swój samochód \nPojemność twojego baku wynosi " + str(self.fuel) + "\n")
-        print ("Twoja mapa: Warszawa: 1, 2, 3, łódź: 4, 5, 6, Kraków: 7, 8, 9, Zakopane: 10,11, 12")
+        self.check_road()
+        self.map()
 
     def run (self, km):
         if self.fuel < km:
@@ -70,55 +71,19 @@ class car:
     def check_road (self):
         if self.road <= 3:
             wiersz = linecache.getline('miasta.txt', 1)
-            print (" Jesteś w Warszawie - pole nr " + str(self.road) +"\n" +str(wiersz) )
+            print (" Jesteś w Warszawie - pole nr " + str(self.road) + "\nOpis miasta: " +str(wiersz))
         elif self.road <= 6:
-            print ("Jesteś w łodzi - pole nr " + str(self.road))
+            wiersz = linecache.getline('miasta.txt', 2)
+            print ("Jesteś w łodzi - pole nr " + str(self.road) + "\nOpis miasta: " +str(wiersz))
         elif self.road <= 9:
-            print ("Jesteś w Krakowie - pole nr " + str(self.road))
+            wiersz = linecache.getline('miasta.txt', 3)
+            print ("Jesteś w Krakowie - pole nr " + str(self.road) + "\nOpis miasta: " +str(wiersz))
         elif self.road <= 12:
-            print ("Jesteś w Zakopanem - pole nr " + str(self.road))
+            wiersz = linecache.getline('miasta.txt', 4)
+            print ("Jesteś w Zakopanem - pole nr " + str(self.road) + "\nOpis miasta: " +str(wiersz))
     def check_fuel(self):
         print ("Obecny stan baku: " + str(self.fuel) + " jednostek paliwa")
     def chech_cost(self):
         print ("Całkowity koszt za paliwo wynosi " +str (self.cost))
-
-
-'''
-Program bez interakcji
-
-car1 = car()
-print ("----CHECK------")
-car1.check_fuel()
-car1.check_road()
-print ("---RUN 5-------")
-car1.run(5)
-car1.check_road()
-print ("---RUN 5-------")
-car1.run(5)
-print ("---TANKUJ-------")
-car1.tankuj(5)
-print ("---RUN 5-------")
-car1.run(5)
-car1.check_road()
-print ("---RUN 5-------")
-car1.run(5)
-print ("---TANKUJ-------")
-car1.tankuj(5)
-print ("---RUN 5-------")
-car1.run(5)
-print ("----CHECK------")
-car1.chech_cost()
-'''
-
-#Interakcja
-
-start = input ("Napisz 'start', by rozpocząć")
-while start.lower() != 'start':
-    start = input ("Napisz poprawnie słowo 'start', używając liter dowolnej wielkości")
-else:
-    print ("\n")
-    car1 = car()
-
-car1.check_road()
-
-
+    def map(self):
+        print("Twoja mapa: Warszawa: 1, 2, 3, łódź: 4, 5, 6, Kraków: 7, 8, 9, Zakopane: 10,11, 12")
